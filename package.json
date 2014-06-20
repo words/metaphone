@@ -33,7 +33,7 @@
     "make": "npm run-script build-browser && npm run-script lint && npm run-script coverage"
   },
   "testling": {
-    "files": "spec/parse-english.spec.js",
+    "files": "spec/metaphone.spec.js",
     "harness": "mocha",
     "browsers": [
       "iexplore/latest",
