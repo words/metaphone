@@ -31,5 +31,21 @@
     "build-browser": "browserify spec/metaphone.spec.js -o spec/browser.spec.js",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/metaphone.spec.js",
     "make": "npm run-script build-browser && npm run-script lint && npm run-script coverage"
+  },
+  "testling": {
+    "files": "spec/parse-english.spec.js",
+    "harness": "mocha",
+    "browsers": [
+      "iexplore/latest",
+      "chrome/latest",
+      "chrome/canary",
+      "firefox/latest",
+      "firefox/nightly",
+      "opera/latest",
+      "opera/next",
+      "safari/latest",
+      "iphone/latest",
+      "android-browser/latest"
+    ]
   }
 }
