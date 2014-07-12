@@ -10,7 +10,6 @@
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^4.1.11",
     "istanbul": "~0.2.11",
     "jscs": "^1.5.3",
     "eslint": "^0.6.2",
@@ -27,10 +26,10 @@
     "lint-api": "node_modules/.bin/eslint index.js --env node --env browser --rule 'quotes: [2, single], no-cond-assign: false'",
     "lint-test": "node_modules/.bin/eslint spec/metaphone.spec.js --env node --env mocha --rule 'quotes: [2, single], no-loop-func: false'",
     "lint-style": "node_modules/.bin/jscs index.js spec/metaphone.spec.js --reporter=inline",
-    "prepublish": "npm run-script build-browser",
-    "build-browser": "browserify spec/metaphone.spec.js -o spec/browser.spec.js",
+    "install-browser-test": "npm install browserify",
+    "build-browser-test": "node_modules/.bin/browserify spec/metaphone.spec.js -o spec/browser.spec.js",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/metaphone.spec.js",
-    "make": "npm run-script build-browser && npm run-script lint && npm run-script coverage"
+    "make": "npm run-script lint && npm run-script coverage"
   },
   "testling": {
     "files": "spec/metaphone.spec.js",
