@@ -45,7 +45,7 @@ metaphone(stemmer("detestable")) === metaphone(stemmer("tetest")); // true
 
 ## Other Metaphone implementations
 
-- [NaturalNode/natural](https://github.com/NaturalNode/natural) — Currently (14/07/12) contains a small [bug](https://github.com/NaturalNode/natural/issues/169).
+- [NaturalNode/natural](https://github.com/NaturalNode/natural);
 - [Katee/metaphone](https://github.com/Katee/metaphone) — Not a node package.
 - [Yomguithereal/clj-fuzzy](https://github.com/Yomguithereal/clj-fuzzy) — Clojure, bit slow.
 
