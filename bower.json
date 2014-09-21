@@ -1,0 +1,28 @@
+{
+  "name": "metaphone",
+  "main": "index.js",
+  "description": "An implementation of the Metaphone algorithm by Lawrence Philips",
+  "license": "MIT",
+  "keywords": [
+    "lawrence",
+    "philips",
+    "metaphone"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/metaphone.git"
+  },
+  "authors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
+  "ignore": [
+    ".*",
+    "*.log",
+    "*.md",
+    "component.json",
+    "package.json",
+    "coverage",
+    "node_modules",
+    "spec"
+  ]
+}
