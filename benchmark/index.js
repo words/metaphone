@@ -1,27 +1,41 @@
 'use strict';
 
-/* eslint-disable no-cond-assign */
+var metaphone,
+    words,
+    natural,
+    metafone,
+    cljFuzzy;
 
-var metaphone, source, natural, metafone, cljFuzzy;
+/**
+ * Module dependencies.
+ */
 
 metaphone = require('..');
+
+/**
+ * Optional dependencies.
+ */
 
 try {
     natural = require('natural').Metaphone;
     metafone = require('../node_modules/metafone/metafone.js').convert;
     cljFuzzy = require('clj-fuzzy').phonetics.metaphone;
 } catch (error) {
-    throw new Error(
+    console.log(
         '\u001B[0;31m' +
-        'The libraries needed by this benchmark could not be found. ' +
-        'Please execute:\n' +
-        '\tnpm run install-benchmark\n\n' +
+        '  The libraries needed by this benchmark could not be found. ' +
+        '  Please execute:\n' +
+        '    npm run install-benchmark\n' +
         '\u001B[0m'
     );
 }
 
-/* The first 1000 words from Letterpress: https://github.com/atebits/Words */
-source = [
+/**
+ * The first 1000 words from Letterpress:
+ *   https://github.com/atebits/Words
+ */
+
+words = [
     'aa',
     'aah',
     'aahed',
@@ -1024,54 +1038,56 @@ source = [
     'acaulescent'
 ];
 
+/**
+ * Benchmark this module.
+ */
+
 suite('metaphone — this module', function () {
-    bench('op/s * 1,000', function (next) {
-        var iterator = -1,
-            value;
-
-        while (value = source[++iterator]) {
-            metaphone(value);
-        }
-
-        next();
+    bench('op/s * 1,000', function () {
+        words.forEach(function (word) {
+            metaphone(word);
+        });
     });
 });
 
-suite('natural — more options', function () {
-    bench('op/s * 1,000', function (next) {
-        var iterator = -1,
-            value;
+/**
+ * Benchmark natural.
+ */
 
-        while (value = source[++iterator]) {
-            natural.process(value);
-        }
-
-        next();
+if (natural) {
+    suite('natural — more options', function () {
+        bench('op/s * 1,000', function () {
+            words.forEach(function (word) {
+                natural.process(word);
+            });
+        });
     });
-});
+}
 
-suite('Katee/metafone — pretty buggy', function () {
-    bench('op/s * 1,000', function (next) {
-        var iterator = -1,
-            value;
+/**
+ * Benchmark Katee/metafone.
+ */
 
-        while (value = source[++iterator]) {
-            metafone(value);
-        }
-
-        next();
+if (metafone) {
+    suite('Katee/metafone — pretty buggy', function () {
+        bench('op/s * 1,000', function () {
+            words.forEach(function (word) {
+                metafone(word);
+            });
+        });
     });
-});
+}
 
-suite('clj-fuzzy', function () {
-    bench('op/s * 1,000', function (next) {
-        var iterator = -1,
-            value;
+/**
+ * Benchmark clj-fuzzy.
+ */
 
-        while (value = source[++iterator]) {
-            cljFuzzy(value);
-        }
-
-        next();
+if (cljFuzzy) {
+    suite('clj-fuzzy', function () {
+        bench('op/s * 1,000', function () {
+            words.forEach(function (word) {
+                cljFuzzy(word);
+            });
+        });
     });
-});
+}
