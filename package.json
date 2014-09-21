@@ -34,21 +34,5 @@
     "install-benchmark": "npm install natural && git clone git@github.com:Katee/metaphone.git node_modules/metafone",
     "benchmark": "node_modules/.bin/matcha",
     "make": "npm run lint && npm run coverage"
-  },
-  "testling": {
-    "files": "spec/metaphone.spec.js",
-    "harness": "mocha",
-    "browsers": [
-      "iexplore/latest",
-      "chrome/latest",
-      "chrome/canary",
-      "firefox/latest",
-      "firefox/nightly",
-      "opera/latest",
-      "opera/next",
-      "safari/latest",
-      "iphone/latest",
-      "android-browser/latest"
-    ]
   }
 }

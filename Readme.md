@@ -1,9 +1,5 @@
 # metaphone [![Build Status](https://travis-ci.org/wooorm/metaphone.svg?branch=master)](https://travis-ci.org/wooorm/metaphone) [![Coverage Status](https://img.shields.io/coveralls/wooorm/metaphone.svg)](https://coveralls.io/r/wooorm/metaphone?branch=master)
 
-[![browser support](https://ci.testling.com/wooorm/metaphone.png) ](https://ci.testling.com/wooorm/metaphone)
-
----
-
 The [original metaphone](http://en.wikipedia.org/wiki/Metaphone) algorithm in JavaScript.
 
 For even better results, combine it with a stemmer (e.g., my own porter stemmer [implementation](https://github.com/wooorm/stemmer)).
