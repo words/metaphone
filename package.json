@@ -29,7 +29,7 @@
     "lint-benchmark": "node_modules/.bin/eslint benchmark/index.js --env node --global suite,set,bench --rule 'quotes: [2, single]'",
     "lint-style": "node_modules/.bin/jscs index.js spec/metaphone.spec.js --reporter=inline",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/metaphone.spec.js",
-    "install-benchmark": "npm install natural && git clone git@github.com:Katee/metaphone.git node_modules/metafone",
+    "install-benchmark": "npm install clj-fuzzy natural && git clone git@github.com:Katee/metaphone.git node_modules/metafone",
     "benchmark": "node_modules/.bin/matcha",
     "make": "npm run lint && npm run coverage"
   }
