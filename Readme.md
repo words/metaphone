@@ -6,14 +6,19 @@ For even better results, combine it with a stemmer (e.g., my own porter stemmer 
 
 ## Installation
 
-NPM:
+npm:
 ```sh
 $ npm install metaphone
 ```
 
-Component.js:
+Component:
 ```sh
 $ component install wooorm/metaphone
+```
+
+Bower:
+```sh
+$ bower install metaphone
 ```
 
 ## Usage
