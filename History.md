@@ -1,4 +1,25 @@
 
+n.n.n / 2014-09-21
+==================
+
+ * Refactor spec
+ * Refactor benchmark
+ * Refactor API
+ * Update benchmark results in docs
+ * Add missing `clj-fuzzy` to install-benchmark script
+ * Add npm deployment to travis
+ * Remove npm update from travis
+ * Remove browser test
+ * Update .gitignore, .npmignore
+ * Update Installation in docs
+ * Add bower.json
+ * Reorder properties in package.json and component.json
+ * Update copyright in docs
+ * Remove testling
+ * Update eslint, broaden jscs and mocha version ranges
+ * Added components to gitignore
+ * Removed the notification about Natural’s bug
+
 0.1.0 / 2014-07-12
 ==================
 
