@@ -2,13 +2,13 @@
   "name": "metaphone",
   "version": "0.1.0",
   "description": "An implementation of the Metaphone algorithm by Lawrence Philips",
+  "license": "MIT",
   "keywords": [
     "lawrence",
     "philips",
     "metaphone"
   ],
   "author": "Titus Wormer <tituswormer@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "eslint": "^0.8.0",
     "istanbul": "^0.3.0",

@@ -1,8 +1,8 @@
 {
   "name": "metaphone",
-  "repository": "wooorm/metaphone",
-  "description": "An implementation of the Metaphone algorithm by Lawrence Philips",
   "version": "0.1.0",
+  "description": "An implementation of the Metaphone algorithm by Lawrence Philips",
+  "license": "MIT",
   "keywords": [
     "lawrence",
     "philips",
@@ -11,5 +11,5 @@
   "scripts" : [
     "index.js"
   ],
-  "license": "MIT"
+  "repository": "wooorm/metaphone"
 }
