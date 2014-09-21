@@ -63,15 +63,15 @@ On a MacBook Air, it runs about 134,000 op/s, which is a bit faster than natural
 
 ```
            metaphone — this module
-  134 op/s » op/s * 1,000
+  136 op/s » op/s * 1,000
 
            natural — more options
-  116 op/s » op/s * 1,000
+  113 op/s » op/s * 1,000
 
            Katee/metafone — pretty buggy
-   53 op/s » op/s * 1,000
+   45 op/s » op/s * 1,000
 
-           clj-fuzzy — pretty buggy
+           clj-fuzzy
     7 op/s » op/s * 1,000
 ```
 
