@@ -1,11 +1,20 @@
 'use strict';
 
-var metaphone, assert;
+var metaphone,
+    assert;
+
+/**
+ * Module dependencies.
+ */
 
 metaphone = require('..');
 assert = require('assert');
 
-describe('metaphone()', function () {
+/**
+ * Unit tests.
+ */
+
+describe('metaphone(value)', function () {
     it('should be of type `function`', function () {
         assert(typeof metaphone === 'function');
     });
@@ -221,29 +230,41 @@ describe('metaphone()', function () {
         assert(metaphone('HICCUPS') === result);
         assert(metaphone('HiCcUpS') === result);
     });
+});
 
-    it('should be compatible with (Node) Natural', function () {
-        // Source:
-        // https://github.com/NaturalNode/natural
-        var attribute, tests;
+/**
+ * Tests that this module returns the same results
+ * as Natural.
+ *
+ * Source:
+ *   https://github.com/NaturalNode/natural
+ */
 
-        tests = {
-            'ablaze' : 'ABLS',
-            'transition' : 'TRNSXN',
-            'astronomical' : 'ASTRNMKL',
-            'buzzard' : 'BSRT',
-            'wonderer' : 'WNTRR',
-            'district' : 'TSTRKT',
-            'hockey' : 'HK',
-            'capital' : 'KPTL',
-            'penguin' : 'PNKN',
-            'garbonzo' : 'KRBNS',
-            'lightning' : 'LTNNK',
-            'light' : 'LT'
-        };
+describe('Compatibility with Natural', function () {
+    var fixtures = {
+        'ablaze' : 'ABLS',
+        'transition' : 'TRNSXN',
+        'astronomical' : 'ASTRNMKL',
+        'buzzard' : 'BSRT',
+        'wonderer' : 'WNTRR',
+        'district' : 'TSTRKT',
+        'hockey' : 'HK',
+        'capital' : 'KPTL',
+        'penguin' : 'PNKN',
+        'garbonzo' : 'KRBNS',
+        'lightning' : 'LTNNK',
+        'light' : 'LT'
+    };
 
-        for (attribute in tests) {
-            assert(metaphone(attribute) === tests[attribute]);
-        }
+    Object.keys(fixtures).forEach(function (fixture) {
+        var result;
+
+        result = fixtures[fixture];
+
+        it('should process `' + fixture + '` to `' + result + '`',
+            function () {
+                assert(metaphone(fixture) === result);
+            }
+        );
     });
 });
