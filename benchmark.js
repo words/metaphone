@@ -10,7 +10,7 @@ var metaphone,
  * Module dependencies.
  */
 
-metaphone = require('..');
+metaphone = require('./');
 
 /**
  * Optional dependencies.
@@ -18,7 +18,7 @@ metaphone = require('..');
 
 try {
     natural = require('natural').Metaphone;
-    metafone = require('../node_modules/metafone/metafone.js').convert;
+    metafone = require('./node_modules/metafone/metafone.js').convert;
     cljFuzzy = require('clj-fuzzy').phonetics.metaphone;
 } catch (error) {
     console.log(
