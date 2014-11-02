@@ -3,8 +3,7 @@
 var metaphone,
     words,
     natural,
-    metafone,
-    cljFuzzy;
+    metafone;
 
 /**
  * Module dependencies.
@@ -19,7 +18,6 @@ metaphone = require('./');
 try {
     natural = require('natural').Metaphone;
     metafone = require('./node_modules/metafone/metafone.js').convert;
-    cljFuzzy = require('clj-fuzzy').phonetics.metaphone;
 } catch (error) {
     console.log(
         '\u001B[0;31m' +
@@ -1073,20 +1071,6 @@ if (metafone) {
         bench('op/s * 1,000', function () {
             words.forEach(function (word) {
                 metafone(word);
-            });
-        });
-    });
-}
-
-/**
- * Benchmark clj-fuzzy.
- */
-
-if (cljFuzzy) {
-    suite('clj-fuzzy', function () {
-        bench('op/s * 1,000', function () {
-            words.forEach(function (word) {
-                cljFuzzy(word);
             });
         });
     });

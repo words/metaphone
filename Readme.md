@@ -48,7 +48,6 @@ metaphone(stemmer("detestable")) === metaphone(stemmer("tetest")); // true
 
 - [NaturalNode/natural](https://github.com/NaturalNode/natural);
 - [Katee/metaphone](https://github.com/Katee/metaphone) — Not a node package.
-- [Yomguithereal/clj-fuzzy](https://github.com/Yomguithereal/clj-fuzzy) — Clojure, bit slow.
 
 ## Benchmark
 
@@ -70,9 +69,6 @@ On a MacBook Air, it runs about 134,000 op/s, which is a bit faster than natural
 
            Katee/metafone — pretty buggy
    45 op/s » op/s * 1,000
-
-           clj-fuzzy
-    7 op/s » op/s * 1,000
 ```
 
 ## License
