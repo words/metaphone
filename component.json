@@ -8,8 +8,8 @@
     "philips",
     "metaphone"
   ],
+  "repository": "wooorm/metaphone",
   "scripts" : [
     "index.js"
-  ],
-  "repository": "wooorm/metaphone"
+  ]
 }
