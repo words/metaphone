@@ -1,4 +1,4 @@
-# metaphone [![Build Status](https://travis-ci.org/wooorm/metaphone.svg?branch=master)](https://travis-ci.org/wooorm/metaphone) [![Coverage Status](https://img.shields.io/coveralls/wooorm/metaphone.svg)](https://coveralls.io/r/wooorm/metaphone?branch=master)
+# metaphone [![Build Status](https://img.shields.io/travis/wooorm/metaphone.svg?style=flat)](https://travis-ci.org/wooorm/metaphone) [![Coverage Status](https://img.shields.io/coveralls/wooorm/metaphone.svg?style=flat)](https://coveralls.io/r/wooorm/metaphone?branch=master)
 
 A fast implementation of the [original metaphone](http://en.wikipedia.org/wiki/Metaphone) algorithm.
 
@@ -51,14 +51,7 @@ metaphone(stemmer("detestable")) === metaphone(stemmer("tetest")); // true
 
 ## Benchmark
 
-Run the benchmark yourself:
-
-```sh
-$ npm run install-benchmark # Just once of course.
-$ npm run benchmark
-```
-
-On a MacBook Air, it runs about 134,000 op/s, which is a bit faster than natural.
+On a MacBook Air, it runs about 136,000 op/s, which is a bit faster than natural.
 
 ```
            metaphone — this module
