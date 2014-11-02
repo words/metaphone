@@ -1,7 +1,7 @@
 {
   "name": "metaphone",
   "version": "0.1.1",
-  "description": "An implementation of the Metaphone algorithm by Lawrence Philips",
+  "description": "Fast Metaphone implementation",
   "license": "MIT",
   "keywords": [
     "lawrence",
