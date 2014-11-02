@@ -4,6 +4,9 @@
   "description": "Fast Metaphone implementation",
   "license": "MIT",
   "keywords": [
+    "natural",
+    "language",
+    "phonetics",
     "lawrence",
     "philips",
     "metaphone"
