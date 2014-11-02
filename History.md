@@ -1,4 +1,21 @@
 
+n.n.n / 2014-11-02
+==================
+
+ * Refactor `Readme.md`
+ * Refactor npm script target order in `package.json`
+ * Remove clj-fuzzy from benchmark and competition
+ * Update package keywords
+ * Update package description
+ * Refactor property order in `package.json`, `component.json`
+ * Add `.eslintrc`
+ * Refactor `.jscs.json`
+ * Refactor to disallow space after object keys
+ * Update eslint, mocha
+ * Update .gitignore, .npmignore, bower ignore
+ * Move benchmark to benchmark.js
+ * Move spec to test.js
+
 0.1.1 / 2014-09-21
 ==================
 
