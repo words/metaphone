@@ -242,18 +242,18 @@ describe('metaphone(value)', function () {
 
 describe('Compatibility with Natural', function () {
     var fixtures = {
-        'ablaze' : 'ABLS',
-        'transition' : 'TRNSXN',
-        'astronomical' : 'ASTRNMKL',
-        'buzzard' : 'BSRT',
-        'wonderer' : 'WNTRR',
-        'district' : 'TSTRKT',
-        'hockey' : 'HK',
-        'capital' : 'KPTL',
-        'penguin' : 'PNKN',
-        'garbonzo' : 'KRBNS',
-        'lightning' : 'LTNNK',
-        'light' : 'LT'
+        'ablaze': 'ABLS',
+        'transition': 'TRNSXN',
+        'astronomical': 'ASTRNMKL',
+        'buzzard': 'BSRT',
+        'wonderer': 'WNTRR',
+        'district': 'TSTRKT',
+        'hockey': 'HK',
+        'capital': 'KPTL',
+        'penguin': 'PNKN',
+        'garbonzo': 'KRBNS',
+        'lightning': 'LTNNK',
+        'light': 'LT'
     };
 
     Object.keys(fixtures).forEach(function (fixture) {
