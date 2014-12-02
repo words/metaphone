@@ -32,8 +32,8 @@ metaphone("detestable") === metaphone("tetestble"); // true
 
 With [stemmer](https://github.com/wooorm/stemmer):
 ```js
-var metaphone = require('metaphone'),
-    stemmer = require('stemmer');
+var metaphone = require('metaphone');
+var stemmer = require('stemmer');
 
 metaphone(stemmer("hiccups")); // HKKP
 metaphone(stemmer("detestable")); // TTST
