@@ -9,7 +9,9 @@
     "phonetics",
     "lawrence",
     "philips",
-    "metaphone"
+    "metaphone",
+    "cli",
+    "bin"
   ],
   "repository": "wooorm/metaphone",
   "scripts" : [

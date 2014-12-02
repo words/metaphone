@@ -42,6 +42,35 @@ metaphone(stemmer("vileness")); // FL
 metaphone(stemmer("detestable")) === metaphone(stemmer("tetest")); // true
 ```
 
+## CLI
+
+Install:
+```sh
+$ npm install --global metaphone
+```
+
+Use:
+```
+Usage: metaphone [options] string
+
+Fast Metaphone implementation
+
+Options:
+
+  -h, --help           output usage information
+  -v, --version        output version number
+
+Usage:
+
+# output phonetics of given value
+$ metaphone detestable
+# TTSTBL
+
+# output phonetics from stdin
+$ echo "vileness" | metaphone
+# FLNS
+```
+
 ## Benchmark
 
 On a MacBook Air, it runs about 136,000 op/s, which is a bit faster than natural.

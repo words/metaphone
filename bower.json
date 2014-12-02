@@ -9,7 +9,9 @@
     "phonetics",
     "lawrence",
     "philips",
-    "metaphone"
+    "metaphone",
+    "cli",
+    "bin"
   ],
   "repository": {
     "type": "git",
@@ -27,8 +29,9 @@
     "coverage/",
     "node_modules/",
     "benchmark.js",
+    "cli.js",
+    "test.js",
     "component.json",
-    "package.json",
-    "test.js"
+    "package.json"
   ]
 }
