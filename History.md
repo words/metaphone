@@ -1,4 +1,16 @@
 
+n.n.n / 2014-12-02
+==================
+
+ * Add CLI
+ * Refactor npm script targets in `package.json`
+ * Add link to personal website to copyright in `Readme.md`
+ * Update useage example in `Readme.md`
+ * Remove other implementations from `Readme.md`
+ * Add shorter description to `Readme.md`
+ * Fix incorrect executive rights on `test.js`
+ * Update eslint, matcha
+
 0.1.2 / 2014-11-02
 ==================
 
