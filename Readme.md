@@ -42,11 +42,6 @@ metaphone(stemmer("vileness")); // FL
 metaphone(stemmer("detestable")) === metaphone(stemmer("tetest")); // true
 ```
 
-## Other Metaphone implementations
-
-- [NaturalNode/natural](https://github.com/NaturalNode/natural);
-- [Katee/metaphone](https://github.com/Katee/metaphone) — Not a node package.
-
 ## Benchmark
 
 On a MacBook Air, it runs about 136,000 op/s, which is a bit faster than natural.
