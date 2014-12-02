@@ -1,8 +1,6 @@
 # metaphone [![Build Status](https://img.shields.io/travis/wooorm/metaphone.svg?style=flat)](https://travis-ci.org/wooorm/metaphone) [![Coverage Status](https://img.shields.io/coveralls/wooorm/metaphone.svg?style=flat)](https://coveralls.io/r/wooorm/metaphone?branch=master)
 
-A fast implementation of the [original metaphone](http://en.wikipedia.org/wiki/Metaphone) algorithm.
-
-For even better results, combine it with a stemmer (e.g., my own porter stemmer [implementation](https://github.com/wooorm/stemmer)).
+[Metaphone](http://en.wikipedia.org/wiki/metaphone) algorithm in JavaScript. No cruft. Real fast.
 
 ## Installation
 
