@@ -22,6 +22,12 @@ $ component install wooorm/metaphone
 $ bower install metaphone
 ```
 
+[Duo](http://duojs.org/#getting-started):
+
+```javascript
+var metaphone = require('wooorm/metaphone');
+```
+
 ## Usage
 
 ```javascript
