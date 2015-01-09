@@ -24,6 +24,7 @@
     ".*",
     "*.log",
     "*.md",
+    "*.sh",
     "build/",
     "components/",
     "coverage/",
