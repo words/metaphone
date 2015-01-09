@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-/**
+/*
  * Dependencies.
  */
 
@@ -11,7 +11,7 @@ var metaphone,
 metaphone = require('./');
 pack = require('./package.json');
 
-/**
+/*
  * Arguments.
  */
 
@@ -19,7 +19,7 @@ var argv;
 
 argv = process.argv.slice(2);
 
-/**
+/*
  * Command.
  */
 
@@ -30,7 +30,6 @@ command = Object.keys(pack.bin)[0];
 /**
  * Help.
  */
-
 function help() {
     console.log([
         '',
@@ -55,7 +54,7 @@ function help() {
     ].join('\n  ') + '\n');
 }
 
-/**
+/*
  * Program.
  */
 

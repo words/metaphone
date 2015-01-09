@@ -5,13 +5,13 @@ var metaphone,
     natural,
     metafone;
 
-/**
+/*
  * Module dependencies.
  */
 
 metaphone = require('./');
 
-/**
+/*
  * Optional dependencies.
  */
 
@@ -28,7 +28,7 @@ try {
     );
 }
 
-/**
+/*
  * The first 1000 words from Letterpress:
  *   https://github.com/atebits/Words
  */
@@ -1036,7 +1036,7 @@ words = [
     'acaulescent'
 ];
 
-/**
+/*
  * Benchmark this module.
  */
 
@@ -1048,7 +1048,7 @@ suite('metaphone — this module', function () {
     });
 });
 
-/**
+/*
  * Benchmark natural.
  */
 
@@ -1062,7 +1062,7 @@ if (natural) {
     });
 }
 
-/**
+/*
  * Benchmark Katee/metafone.
  */
 
