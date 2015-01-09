@@ -4,24 +4,27 @@
 
 ## Installation
 
-npm:
-```sh
+[npm](https://docs.npmjs.com/cli/install):
+
+```bash
 $ npm install metaphone
 ```
 
-Component:
-```sh
+[Component.js](https://github.com/componentjs/component):
+
+```bash
 $ component install wooorm/metaphone
 ```
 
-Bower:
-```sh
+[Bower](http://bower.io/#install-packages):
+
+```bash
 $ bower install metaphone
 ```
 
 ## Usage
 
-```js
+```javascript
 var metaphone = require('metaphone');
 
 metaphone("hiccups"); // "HKKPS"
@@ -31,7 +34,8 @@ metaphone("detestable") === metaphone("tetestble"); // true
 ```
 
 With [stemmer](https://github.com/wooorm/stemmer):
-```js
+
+```javascript
 var metaphone = require('metaphone');
 var stemmer = require('stemmer');
 
@@ -45,12 +49,14 @@ metaphone(stemmer("detestable")) === metaphone(stemmer("tetest")); // true
 ## CLI
 
 Install:
-```sh
+
+```bash
 $ npm install --global metaphone
 ```
 
 Use:
-```
+
+```text
 Usage: metaphone [options] string
 
 Fast Metaphone implementation
@@ -75,7 +81,7 @@ $ echo "vileness" | metaphone
 
 On a MacBook Air, it runs about 136,000 op/s, which is a bit faster than natural.
 
-```
+```text
            metaphone — this module
   136 op/s » op/s * 1,000
 
