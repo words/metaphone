@@ -63,7 +63,7 @@ $ npm install --global metaphone
 Use:
 
 ```text
-Usage: metaphone [options] string
+Usage: metaphone [options] <words...>
 
 Fast Metaphone implementation
 
@@ -74,13 +74,13 @@ Options:
 
 Usage:
 
-# output phonetics of given value
-$ metaphone detestable
-# TTSTBL
+# output phonetics
+$ metaphone considerations detestable
+# KNSTRXNS TTSTBL
 
 # output phonetics from stdin
-$ echo "vileness" | metaphone
-# FLNS
+$ echo "hiccups vileness" | metaphone
+# HKKPS FLNS
 ```
 
 ## Benchmark
