@@ -8,8 +8,16 @@
 var metaphone,
     pack;
 
-metaphone = require('./');
 pack = require('./package.json');
+metaphone = require('./');
+
+/*
+ * Detect if a value is expected to be piped in.
+ */
+
+var expextPipeIn;
+
+expextPipeIn = !process.stdin.isTTY;
 
 /*
  * Arguments.
@@ -28,12 +36,24 @@ var command;
 command = Object.keys(pack.bin)[0];
 
 /**
+ * Get the distance for a word.
+ *
+ * @param {Array.<string>} values
+ * @return {string}
+ */
+function phonetics(values) {
+    return values.map(metaphone).join(' ');
+}
+
+/**
  * Help.
+ *
+ * @return {string}
  */
 function help() {
-    console.log([
+    return [
         '',
-        'Usage: ' + command + ' [options] string',
+        'Usage: ' + command + ' [options] <words...>',
         '',
         pack.description,
         '',
@@ -44,14 +64,29 @@ function help() {
         '',
         'Usage:',
         '',
-        '# output phonetics of given value',
-        '$ ' + command + ' detestable',
-        '# TTSTBL',
+        '# output phonetics',
+        '$ ' + command + ' considerations detestable',
+        '# ' + phonetics(['considerations', 'detestable']),
         '',
         '# output phonetics from stdin',
-        '$ echo "vileness" | ' + command,
-        '# FLNS'
-    ].join('\n  ') + '\n');
+        '$ echo "hiccups vileness" | ' + command,
+        '# ' + phonetics(['hiccups', 'vileness']),
+        ''
+    ].join('\n  ') + '\n';
+}
+
+/**
+ * Get the edit distance for a list containing one word.
+ *
+ * @param {Array.<string>} values
+ */
+function getPhonetics(values) {
+    if (values.length) {
+        console.log(phonetics(values));
+    } else {
+        process.stderr.write(help());
+        process.exit(1);
+    }
 }
 
 /*
@@ -62,20 +97,20 @@ if (
     argv.indexOf('--help') !== -1 ||
     argv.indexOf('-h') !== -1
 ) {
-    help();
+    console.log(help());
 } else if (
     argv.indexOf('--version') !== -1 ||
     argv.indexOf('-v') !== -1
 ) {
     console.log(pack.version);
-} else if (argv.length === 1) {
-    console.log(metaphone(argv[0]));
 } else if (argv.length) {
-    help();
+    getPhonetics(argv.join(' ').split(/\s+/g));
+} else if (!expextPipeIn) {
+    getPhonetics([]);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     process.stdin.on('data', function (data) {
-        console.log(metaphone(data.trim()));
+        getPhonetics(data.trim().split(/\s+/g));
     });
 }
