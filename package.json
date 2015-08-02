@@ -16,7 +16,7 @@
   "dependencies": {},
   "bin": "cli.js",
   "files": [
-    "bin",
+    "cli.js",
     "index.js"
   ],
   "repository": {
