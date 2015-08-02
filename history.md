@@ -4,6 +4,11 @@
 
 <!--lint disable maximum-line-length-->
 
+1.0.1 / 2015-08-02
+==================
+
+*   Fix missing `cli.js` in ignored npm ([4f9c182](https://github.com/wooorm/metaphone/commit/4f9c182))
+
 1.0.0 / 2015-08-02
 ==================
 
