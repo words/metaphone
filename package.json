@@ -13,36 +13,46 @@
     "cli",
     "bin"
   ],
+  "dependencies": {},
+  "bin": "cli.js",
+  "files": [
+    "bin",
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/wooorm/metaphone.git"
   },
   "author": "Titus Wormer <tituswormer@gmail.com>",
-  "bin": {
-    "metaphone": "cli.js"
-  },
   "devDependencies": {
-    "eslint": "^0.11.0",
+    "browserify": "^11.0.1",
+    "chalk": "^1.0.0",
+    "eslint": "^1.0.0",
+    "esmangle": "^1.0.1",
     "istanbul": "^0.3.0",
-    "jscs": "^1.0.0",
-    "jscs-jsdoc": "^0.4.0",
-    "matcha": "^0.6.0",
-    "mocha": "^2.0.0"
+    "jscs": "^2.0.0",
+    "jscs-jsdoc": "^1.0.0",
+    "mdast": "^0.28.0",
+    "mdast-comment-config": "^0.1.2",
+    "mdast-github": "^0.3.2",
+    "mdast-lint": "^0.4.2",
+    "mdast-slug": "^0.1.1",
+    "mdast-validate-links": "^0.3.1",
+    "mocha": "^2.0.0",
+    "word-list": "^1.0.0"
   },
   "scripts": {
-    "test": "_mocha --check-leaks test.js",
-    "test-cli": "bash test.sh",
-    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test.js",
-    "test-travis": "npm run test-cli && npm run test-coveralls",
-    "coverage": "istanbul cover _mocha -- -- test.js",
-    "lint-api": "eslint index.js",
-    "lint-cli": "eslint --rule no-process-exit:false cli.js",
-    "lint-test": "eslint --env mocha test.js",
-    "lint-benchmark": "eslint --global suite,set,bench benchmark.js",
-    "lint-style": "jscs --reporter inline index.js benchmark.js cli.js test.js",
-    "lint": "npm run lint-api && npm run lint-cli && npm run lint-test && npm run lint-benchmark && npm run lint-style",
-    "make": "npm run lint && npm run coverage",
-    "install-benchmark": "npm install natural && git clone git@github.com:Katee/metaphone.git node_modules/metafone",
-    "benchmark": "matcha benchmark.js"
+    "test-api": "mocha --check-leaks test/index.js",
+    "test-coverage": "istanbul cover _mocha -- test/index.js",
+    "test-travis": "npm run test-coverage",
+    "test": "npm run test-api",
+    "lint-api": "eslint .",
+    "lint-style": "jscs --reporter inline .",
+    "lint": "npm run lint-api && npm run lint-style",
+    "make": "npm run lint && npm run test-coverage",
+    "build-bundle": "browserify index.js --no-builtins -s metaphone > metaphone.js",
+    "postbuild-bundle": "esmangle metaphone.js > metaphone.min.js",
+    "build-md": "mdast . --quiet",
+    "build": "npm run build-bundle && npm run build-md"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "metaphone",
-  "main": "index.js",
+  "main": "metaphone.js",
   "description": "Fast Metaphone implementation",
   "license": "MIT",
   "keywords": [
@@ -24,14 +24,13 @@
     ".*",
     "*.log",
     "*.md",
-    "*.sh",
+    "bin/",
     "build/",
     "components/",
     "coverage/",
     "node_modules/",
-    "benchmark.js",
-    "cli.js",
-    "test.js",
+    "script/",
+    "test/",
     "component.json",
     "package.json"
   ]

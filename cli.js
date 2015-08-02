@@ -1,44 +1,37 @@
 #!/usr/bin/env node
 'use strict';
 
+/* eslint-disable no-console */
+
 /*
  * Dependencies.
  */
 
-var metaphone,
-    pack;
-
-pack = require('./package.json');
-metaphone = require('./');
+var pack = require('./package.json');
+var metaphone = require('./');
 
 /*
  * Detect if a value is expected to be piped in.
  */
 
-var expextPipeIn;
-
-expextPipeIn = !process.stdin.isTTY;
+var expextPipeIn = !process.stdin.isTTY;
 
 /*
  * Arguments.
  */
 
-var argv;
-
-argv = process.argv.slice(2);
+var argv = process.argv.slice(2);
 
 /*
  * Command.
  */
 
-var command;
-
-command = Object.keys(pack.bin)[0];
+var command = pack.name;
 
 /**
  * Get the distance for a word.
  *
- * @param {Array.<string>} values
+ * @param {Array.<string>} values - List of words.
  * @return {string}
  */
 function phonetics(values) {
@@ -76,9 +69,9 @@ function help() {
 }
 
 /**
- * Get the edit distance for a list containing one word.
+ * Get the phonetics for zero or more words.
  *
- * @param {Array.<string>} values
+ * @param {Array.<string>} values - List of words.
  */
 function getPhonetics(values) {
     if (values.length) {

@@ -13,8 +13,10 @@
     "cli",
     "bin"
   ],
+  "dependencies": {
+  },
   "repository": "wooorm/metaphone",
-  "scripts" : [
+  "scripts": [
     "index.js"
   ]
 }

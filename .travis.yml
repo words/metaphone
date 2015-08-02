@@ -3,11 +3,7 @@ script: npm run-script test-travis
 node_js:
 - '0.10'
 - '0.11'
-after_script: npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls
-deploy:
-  provider: npm
-  email: tituswormer@gmail.com
-  api_key:
-    secure: VWv/l/um6oYtxGYl8jtcvf1+hzlGVG4eEynO8r9RVktUpYm9pTHyiY10MGc5LMViI043lwuM2E+jxzAWqoktqLV6ubxbDVOVLMmhANoH7yNcCepCvWsJwdWXCAhlwmUK762K/umrK04BDPwf3OxgzIbXKmPNhtCYn7X0L172OGw=
-  on:
-    repo: wooorm/metaphone
+- '0.12'
+- iojs
+sudo: false
+after_script: npm install codecov.io && cat ./coverage/lcov.info | codecov
