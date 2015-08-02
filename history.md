@@ -4,6 +4,12 @@
 
 <!--lint disable maximum-line-length-->
 
+1.0.0 / 2015-08-02
+==================
+
+*   Fix tests too large for travis ([a8a97f2](https://github.com/wooorm/metaphone/commit/a8a97f2))
+*   Refactor; fix failures ([451c30d](https://github.com/wooorm/metaphone/commit/451c30d))
+
 0.1.4 / 2015-01-09
 ==================
 
