@@ -43,6 +43,7 @@
   },
   "scripts": {
     "test-api": "mocha --check-leaks test/index.js",
+    "test-extensive": "mocha --check-leaks test/extensive.js",
     "test-coverage": "istanbul cover _mocha -- test/index.js",
     "test-travis": "npm run test-coverage",
     "test": "npm run test-api",
