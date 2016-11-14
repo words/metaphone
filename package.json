@@ -27,11 +27,8 @@
   "devDependencies": {
     "browserify": "^11.0.1",
     "chalk": "^1.0.0",
-    "eslint": "^1.0.0",
     "esmangle": "^1.0.1",
     "istanbul": "^0.3.0",
-    "jscs": "^2.0.0",
-    "jscs-jsdoc": "^1.0.0",
     "mdast": "^0.28.0",
     "mdast-comment-config": "^0.1.2",
     "mdast-github": "^0.3.2",
@@ -39,7 +36,8 @@
     "mdast-slug": "^0.1.1",
     "mdast-validate-links": "^0.3.1",
     "mocha": "^2.0.0",
-    "word-list": "^1.0.0"
+    "word-list": "^1.0.0",
+    "xo": "^0.17.1"
   },
   "scripts": {
     "test-api": "mocha --check-leaks test/index.js",
@@ -47,13 +45,20 @@
     "test-coverage": "istanbul cover _mocha -- test/index.js",
     "test-travis": "npm run test-coverage",
     "test": "npm run test-api",
-    "lint-api": "eslint .",
-    "lint-style": "jscs --reporter inline .",
-    "lint": "npm run lint-api && npm run lint-style",
+    "lint": "xo",
     "make": "npm run lint && npm run test-coverage",
     "build-bundle": "browserify index.js --no-builtins -s metaphone > metaphone.js",
     "postbuild-bundle": "esmangle metaphone.js > metaphone.min.js",
     "build-md": "mdast . --quiet",
     "build": "npm run build-bundle && npm run build-md"
+  },
+  "xo": {
+    "space": true,
+    "rules": {
+      "complexity": "off"
+    },
+    "ignore": [
+      "metaphone.js"
+    ]
   }
 }
