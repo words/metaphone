@@ -29,13 +29,9 @@
     "chalk": "^1.0.0",
     "esmangle": "^1.0.1",
     "istanbul": "^0.3.0",
-    "mdast": "^0.28.0",
-    "mdast-comment-config": "^0.1.2",
-    "mdast-github": "^0.3.2",
-    "mdast-lint": "^0.4.2",
-    "mdast-slug": "^0.1.1",
-    "mdast-validate-links": "^0.3.1",
     "mocha": "^2.0.0",
+    "remark-cli": "^2.1.0",
+    "remark-preset-wooorm": "^1.0.0",
     "word-list": "^1.0.0",
     "xo": "^0.17.1"
   },
@@ -49,7 +45,7 @@
     "make": "npm run lint && npm run test-coverage",
     "build-bundle": "browserify index.js --no-builtins -s metaphone > metaphone.js",
     "postbuild-bundle": "esmangle metaphone.js > metaphone.min.js",
-    "build-md": "mdast . --quiet",
+    "build-md": "remark . --quiet --frail --output",
     "build": "npm run build-bundle && npm run build-md"
   },
   "xo": {
@@ -60,5 +56,8 @@
     "ignore": [
       "metaphone.js"
     ]
+  },
+  "remarkConfig": {
+    "presets": "wooorm"
   }
 }

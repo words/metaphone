@@ -1,7 +1,7 @@
 # metaphone [![Build Status](https://img.shields.io/travis/wooorm/metaphone.svg)](https://travis-ci.org/wooorm/metaphone) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/metaphone.svg)](https://codecov.io/github/wooorm/metaphone)
 
 [**Metaphone**](http://en.wikipedia.org/wiki/metaphone) algorithm in
-JavaScript. No cruft. Real fast.
+JavaScript.  No cruft.  Real fast.
 
 ## Installation
 
@@ -10,12 +10,6 @@ JavaScript. No cruft. Real fast.
 ```bash
 npm install metaphone
 ```
-
-**metaphone** is also available for [bower](http://bower.io/#install-packages),
-[component](https://github.com/componentjs/component), and
-[duo](http://duojs.org/#getting-started), and as an AMD, CommonJS, and globals
-module, [uncompressed](metaphone.js) and
-[compressed](metaphone.min.js).
 
 ## Usage
 
