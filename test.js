@@ -1,6 +1,9 @@
 'use strict';
 
+var PassThrough = require('stream').PassThrough;
 var test = require('tape');
+var execa = require('execa');
+var version = require('./package').version;
 var metaphone = require('./');
 
 test('metaphone()', function (t) {
@@ -125,4 +128,41 @@ test('Compatibility with Natural', function (t) {
   function assert(input) {
     t.equal(metaphone(input), fixtures[input], input);
   }
+});
+
+/* CLI. */
+test('cli', function (t) {
+  var input = new PassThrough();
+
+  t.plan(7);
+
+  execa.stdout('./cli.js', ['michael']).then(function (result) {
+    t.equal(result, 'MXL', 'argument');
+  });
+
+  execa.stdout('./cli.js', ['detestable', 'vileness']).then(function (result) {
+    t.equal(result, 'TTSTBL FLNS', 'arguments');
+  });
+
+  execa.stdout('./cli.js', {input: input}).then(function (result) {
+    t.equal(result, 'TTSTBL FLNS', 'stdin');
+  });
+
+  input.write('detestable');
+
+  setImmediate(function () {
+    input.end(' vileness');
+  });
+
+  ['-h', '--help'].forEach(function (flag) {
+    execa.stdout('./cli.js', [flag]).then(function (result) {
+      t.ok(/\s+Usage: metaphone/.test(result), flag);
+    });
+  });
+
+  ['-v', '--version'].forEach(function (flag) {
+    execa.stdout('./cli.js', [flag]).then(function (result) {
+      t.equal(result, version, flag);
+    });
+  });
 });
