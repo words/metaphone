@@ -31,7 +31,6 @@
     "mocha": "^3.0.0",
     "remark-cli": "^2.1.0",
     "remark-preset-wooorm": "^1.0.0",
-    "word-list": "^1.0.0",
     "xo": "^0.17.1"
   },
   "scripts": {
