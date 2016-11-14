@@ -1,7 +1,7 @@
 {
   "name": "metaphone",
   "version": "1.0.1",
-  "description": "Fast Metaphone implementation",
+  "description": "Metaphone implementation",
   "license": "MIT",
   "keywords": [
     "natural",

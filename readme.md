@@ -1,52 +1,53 @@
-# metaphone [![Build Status](https://img.shields.io/travis/wooorm/metaphone.svg)](https://travis-ci.org/wooorm/metaphone) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/metaphone.svg)](https://codecov.io/github/wooorm/metaphone)
+# metaphone [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
 
-[**Metaphone**](http://en.wikipedia.org/wiki/metaphone) algorithm in
-JavaScript.  No cruft.  Real fast.
+[Metaphone algorithm][source].
 
-## Installation
+## API
 
-[npm](https://docs.npmjs.com/cli/install):
+Install:
 
 ```bash
 npm install metaphone
 ```
 
-## Usage
+Use:
 
 ```js
 var metaphone = require('metaphone');
 
-console.log(metaphone('hiccups')); // 'HKKPS'
-console.log(metaphone('detestable')); // 'TTSTBL'
-console.log(metaphone('vileness')); // 'FLNS'
-console.log(metaphone('detestable') === metaphone('tetestble')); // true
+metaphone('michael'); //=> 'MXL'
+metaphone('crevalle'); //=> 'KRFL'
+metaphone('Filipowitz'); //=> 'FLPWTS'
+metaphone('Xavier'); //=> 'SFR'
+metaphone('delicious'); //=> 'TLSS'
+metaphone('acceptingness'); //=> 'AKSPTNKNS'
+metaphone('allegrettos'); //=> 'ALKRTS'
 ```
+
+With [stemmer][]:
 
 ```js
 var metaphone = require('metaphone');
 var stemmer = require('stemmer');
 
-console.log(metaphone(stemmer('hiccups'))); // HKKP
-console.log(metaphone(stemmer('detestable'))); // TTST
-console.log(metaphone(stemmer('vileness'))); // FL
-
-console.log(metaphone(stemmer('detestable')) === metaphone(stemmer('tetest'))); // true
+metaphone(stemmer('acceptingness')); //=> 'AKSPTNK'
+metaphone(stemmer('allegrettos')); //=> 'ALKRT'
 ```
 
 ## CLI
 
 Install:
 
-```bash
-npm install --global metaphone
+```sh
+npm install -g metaphone
 ```
 
 Use:
 
-```text
+```txt
 Usage: metaphone [options] <words...>
 
-Fast Metaphone implementation
+Metaphone implementation
 
 Options:
 
@@ -60,10 +61,32 @@ $ metaphone considerations detestable
 # KNSTRXNS TTSTBL
 
 # output phonetics from stdin
-$ echo "hiccups vileness" | metaphone
+$ echo 'hiccups vileness' | metaphone
 # HKKPS FLNS
+
+# with stemmer
+$ echo 'vileness' | stemmer | metaphone
+# FL
 ```
 
 ## License
 
-[MIT](LICENSE) © [Titus Wormer](http://wooorm.com)
+[MIT][license] © [Titus Wormer][author]
+
+<!-- Definitions -->
+
+[travis-badge]: https://img.shields.io/travis/wooorm/metaphone.svg
+
+[travis]: https://travis-ci.org/wooorm/metaphone
+
+[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/metaphone.svg
+
+[codecov]: https://codecov.io/github/wooorm/metaphone
+
+[license]: LICENSE
+
+[author]: http://wooorm.com
+
+[source]: http://en.wikipedia.org/wiki/metaphone
+
+[stemmer]: https://github.com/wooorm/stemmer
