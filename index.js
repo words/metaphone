@@ -92,7 +92,7 @@ function metaphone(value) {
         phonize('W');
         index += 2;
       }
-      /* else ignore */
+      /* Else ignore */
       break;
     /* X becomes S */
     case 'X':
@@ -112,7 +112,7 @@ function metaphone(value) {
       index++;
       break;
     default:
-      /* do nothing */
+      /* Do nothing */
       break;
   }
 
@@ -201,7 +201,7 @@ function metaphone(value) {
         }
 
         break;
-      /* dropped if after C
+      /* Dropped if after C
        * else K. */
       case 'K':
         if (prev() !== 'C') {
