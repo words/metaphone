@@ -1,9 +1,7 @@
 'use strict';
 
-/* Expose. */
 module.exports = metaphone;
 
-/* Constants. */
 var SH = 'X';
 var TH = '0';
 
