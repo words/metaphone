@@ -13,7 +13,9 @@
     "cli",
     "bin"
   ],
-  "repository": "https://github.com/wooorm/metaphone",
+  "homepage": "https://words.github.io/metaphone/",
+  "repository": "words/metaphone",
+  "issues": "https://github.com/words/metaphone/issues",
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "bin": "cli.js",
   "files": [

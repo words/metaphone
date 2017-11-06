@@ -90,13 +90,13 @@ $ echo 'vileness' | stemmer | metaphone
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/metaphone.svg
+[travis-badge]: https://img.shields.io/travis/words/metaphone.svg
 
-[travis]: https://travis-ci.org/wooorm/metaphone
+[travis]: https://travis-ci.org/words/metaphone
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/metaphone.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/words/metaphone.svg
 
-[codecov]: https://codecov.io/github/wooorm/metaphone
+[codecov]: https://codecov.io/github/words/metaphone
 
 [license]: LICENSE
 
