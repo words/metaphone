@@ -4,7 +4,7 @@ var PassThrough = require('stream').PassThrough;
 var test = require('tape');
 var execa = require('execa');
 var version = require('./package').version;
-var metaphone = require('./');
+var metaphone = require('.');
 
 test('metaphone()', function (t) {
   t.equal(metaphone(''), '', 'should work on `\'\'`');

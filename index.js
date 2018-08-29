@@ -98,10 +98,7 @@ function metaphone(value) {
       index++;
 
       break;
-    /* Vowels are kept */
-    /* We did A already
-    case 'A':
-    case 'a': */
+    /* Vowels are kept (we did A already) */
     case 'E':
     case 'I':
     case 'O':

@@ -2,7 +2,7 @@
 'use strict';
 
 var pack = require('./package.json');
-var metaphone = require('./');
+var metaphone = require('.');
 
 var argv = process.argv.slice(2);
 
