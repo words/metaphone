@@ -98,7 +98,7 @@ $ echo 'vileness' | stemmer | metaphone
 
 [codecov]: https://codecov.io/github/words/metaphone
 
-[license]: LICENSE
+[license]: license
 
 [author]: http://wooorm.com
 
