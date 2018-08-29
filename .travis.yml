@@ -5,20 +5,13 @@ node_js:
 after_script: bash <(curl -s https://codecov.io/bash)
 sudo: false
 deploy:
-  - provider: npm
-    email: tituswormer@gmail.com
-    api_key:
-      secure: TqRShdpLj/ZSmqDnJVFUz5aB11lo20QQiSKfwdhcXTTQysLc/gqjixuOWwXoipiV9BKtHkPYF6HZuTlckGjjXAqYhv0uBsKsRIhBlRGlbYsLrenLZlAnGAXipZxsH8x3wlQHi3IhTkB05T46b3twL5+ufqoA2xDGbqVDy6FY2uI=
-    on:
-      tags: true
-      node: '4.0'
-  - provider: releases
-    skip_cleanup: true
-    api_key:
-      secure: GEQ/1chU5SvUVCycyYhe40CCYYSy9G+Fuyq8l+mwvs7la0fOp+webW5w8zg0jQks3O/1oXncRUqMdImsPf8oeM5YkkdiClLYw+TnT/HGpbJLXWoV8SGPr9qtViqLkUf5nQvdw4EJmwtTirdgFPi+YpsJ1BTW07m31z0QAosVjgw=
-    file:
-      - "metaphone.js"
-      - "metaphone.min.js"
-    on:
-      tags: true
-      node: '9.0'
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: GEQ/1chU5SvUVCycyYhe40CCYYSy9G+Fuyq8l+mwvs7la0fOp+webW5w8zg0jQks3O/1oXncRUqMdImsPf8oeM5YkkdiClLYw+TnT/HGpbJLXWoV8SGPr9qtViqLkUf5nQvdw4EJmwtTirdgFPi+YpsJ1BTW07m31z0QAosVjgw=
+  file:
+    - "metaphone.js"
+    - "metaphone.min.js"
+  on:
+    tags: true
+    node: '9.0'
