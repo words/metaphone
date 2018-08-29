@@ -13,25 +13,25 @@ npm install metaphone
 Use:
 
 ```js
-var metaphone = require('metaphone');
+var metaphone = require('metaphone')
 
-metaphone('michael'); //=> 'MXL'
-metaphone('crevalle'); //=> 'KRFL'
-metaphone('Filipowitz'); //=> 'FLPWTS'
-metaphone('Xavier'); //=> 'SFR'
-metaphone('delicious'); //=> 'TLSS'
-metaphone('acceptingness'); //=> 'AKSPTNKNS'
-metaphone('allegrettos'); //=> 'ALKRTS'
+metaphone('michael') // => 'MXL'
+metaphone('crevalle') // => 'KRFL'
+metaphone('Filipowitz') // => 'FLPWTS'
+metaphone('Xavier') // => 'SFR'
+metaphone('delicious') // => 'TLSS'
+metaphone('acceptingness') // => 'AKSPTNKNS'
+metaphone('allegrettos') // => 'ALKRTS'
 ```
 
 With [stemmer][]:
 
 ```js
-var metaphone = require('metaphone');
-var stemmer = require('stemmer');
+var metaphone = require('metaphone')
+var stemmer = require('stemmer')
 
-metaphone(stemmer('acceptingness')); //=> 'AKSPTNK'
-metaphone(stemmer('allegrettos')); //=> 'ALKRT'
+metaphone(stemmer('acceptingness')) // => 'AKSPTNK'
+metaphone(stemmer('allegrettos')) // => 'ALKRT'
 ```
 
 ## CLI
