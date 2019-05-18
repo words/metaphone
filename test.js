@@ -239,8 +239,8 @@ test('metaphone()', function(t) {
   t.end()
 })
 
-/* Tests that this module returns the same results
- * as Natural (https://github.com/NaturalNode/natural). */
+// Tests that this module returns the same results as Natural.
+// See: <https://github.com/NaturalNode/natural>.
 test('Compatibility with Natural', function(t) {
   var fixtures = {
     ablaze: 'ABLS',
@@ -266,7 +266,6 @@ test('Compatibility with Natural', function(t) {
   }
 })
 
-/* CLI. */
 test('cli', function(t) {
   var input = new PassThrough()
   var helps = ['-h', '--help']
