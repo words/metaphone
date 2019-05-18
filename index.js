@@ -6,6 +6,7 @@ var sh = 'X'
 var th = '0'
 
 // Get the phonetics according to the original Metaphone algorithm from a value
+// eslint-disable-next-line complexity
 function metaphone(value) {
   var phonized = ''
   var index = 0
