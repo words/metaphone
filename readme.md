@@ -1,4 +1,9 @@
-# metaphone [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
+# metaphone
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
 
 [Metaphone algorithm][source].
 
@@ -90,13 +95,21 @@ $ echo 'vileness' | stemmer | metaphone
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/words/metaphone.svg
+[build-badge]: https://img.shields.io/travis/words/metaphone.svg
 
-[travis]: https://travis-ci.org/words/metaphone
+[build]: https://travis-ci.org/words/metaphone
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/words/metaphone.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/words/metaphone.svg
 
-[codecov]: https://codecov.io/github/words/metaphone
+[coverage]: https://codecov.io/github/words/metaphone
+
+[downloads-badge]: https://img.shields.io/npm/dm/metaphone.svg
+
+[downloads]: https://www.npmjs.com/package/metaphone
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/metaphone.svg
+
+[size]: https://bundlephobia.com/result?p=metaphone
 
 [license]: license
 
