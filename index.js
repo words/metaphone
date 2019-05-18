@@ -86,6 +86,7 @@ function metaphone(value) {
         phonize('W')
         index += 2
       }
+
       // Ignore
       break
     // X becomes S
