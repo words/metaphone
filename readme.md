@@ -7,15 +7,15 @@
 
 [Metaphone algorithm][source].
 
-## API
+## Install
 
-Install:
+[npm][]:
 
-```bash
+```sh
 npm install metaphone
 ```
 
-Use:
+## API
 
 ```js
 var metaphone = require('metaphone')
@@ -40,14 +40,6 @@ metaphone(stemmer('allegrettos')) // => 'ALKRT'
 ```
 
 ## CLI
-
-Install:
-
-```sh
-npm install -g metaphone
-```
-
-Use:
 
 ```txt
 Usage: metaphone [options] <words...>
@@ -110,6 +102,8 @@ $ echo 'vileness' | stemmer | metaphone
 [size-badge]: https://img.shields.io/bundlephobia/minzip/metaphone.svg
 
 [size]: https://bundlephobia.com/result?p=metaphone
+
+[npm]: https://www.npmjs.com
 
 [license]: license
 
