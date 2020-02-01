@@ -1,8 +1,8 @@
 'use strict'
 
+var exec = require('child_process').exec
 var PassThrough = require('stream').PassThrough
 var test = require('tape')
-var execa = require('execa')
 var version = require('./package').version
 var metaphone = require('.')
 
@@ -273,33 +273,37 @@ test('cli', function(t) {
 
   t.plan(7)
 
-  execa.stdout('./cli.js', ['michael']).then(function(result) {
-    t.equal(result, 'MXL', 'argument')
+  exec('./cli.js michael', function(err, stdout, stderr) {
+    t.deepEqual([err, stdout, stderr], [null, 'MXL\n', ''], 'one')
   })
 
-  execa.stdout('./cli.js', ['detestable', 'vileness']).then(function(result) {
-    t.equal(result, 'TTSTBL FLNS', 'arguments')
+  exec('./cli.js detestable vileness', function(err, stdout, stderr) {
+    t.deepEqual([err, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'two')
   })
 
-  execa.stdout('./cli.js', {input: input}).then(function(result) {
-    t.equal(result, 'TTSTBL FLNS', 'stdin')
+  var subprocess = exec('./cli.js', function(err, stdout, stderr) {
+    t.deepEqual([err, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'stdin')
   })
 
+  input.pipe(subprocess.stdin)
   input.write('detestable')
-
   setImmediate(function() {
     input.end(' vileness')
   })
 
   helps.forEach(function(flag) {
-    execa.stdout('./cli.js', [flag]).then(function(result) {
-      t.ok(/\s+Usage: metaphone/.test(result), flag)
+    exec('./cli.js ' + flag, function(err, stdout, stderr) {
+      t.deepEqual(
+        [err, /\sUsage: metaphone/.test(stdout), stderr],
+        [null, true, ''],
+        flag
+      )
     })
   })
 
   versions.forEach(function(flag) {
-    execa.stdout('./cli.js', [flag]).then(function(result) {
-      t.equal(result, version, flag)
+    exec('./cli.js ' + flag, function(err, stdout, stderr) {
+      t.deepEqual([err, stdout, stderr], [null, version + '\n', ''], flag)
     })
   })
 })
