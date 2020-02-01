@@ -15,7 +15,11 @@
   ],
   "homepage": "https://words.github.io/metaphone/",
   "repository": "words/metaphone",
-  "issues": "https://github.com/words/metaphone/issues",
+  "bugs": "https://github.com/words/metaphone/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/wooorm"
+  },
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "bin": "cli.js",
   "files": [
