@@ -87,9 +87,9 @@ $ echo 'vileness' | stemmer | metaphone
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/words/metaphone.svg
+[build-badge]: https://github.com/words/metaphone/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/words/metaphone
+[build]: https://github.com/words/metaphone/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/words/metaphone.svg
 
