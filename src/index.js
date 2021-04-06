@@ -1,8 +1,6 @@
-'use strict'
-
 /* eslint-env browser */
 
-var metaphone = require('metaphone')
+import {metaphone} from 'metaphone'
 
 var $input = document.querySelector('input')
 var $output = document.querySelector('output')
