@@ -1,26 +1,47 @@
 var sh = 'X'
 var th = '0'
 
-// Get the phonetics according to the original Metaphone algorithm from a value
+/**
+ * Get the phonetics according to the original Metaphone algorithm from a value
+ *
+ * @param {string} value
+ * @returns {string}
+ */
 export function metaphone(value) {
   var phonized = ''
   var index = 0
+  /** @type {number} */
   var skip
+  /** @type {function(): string} */
   var next
+  /** @type {function(): string} */
   var current
+  /** @type {function(): string} */
   var previous
 
-  // Add `characters` to `phonized`
+  /**
+   * Add `characters` to `phonized`
+   *
+   * @param {string} characters
+   */
   function phonize(characters) {
     phonized += characters
   }
 
-  // Get the character offset by `offset` from the current character
+  /**
+   * Get the character offset by `offset` from the current character
+   *
+   * @param {number} offset
+   */
   function at(offset) {
     return value.charAt(index + offset).toUpperCase()
   }
 
-  // Create an `at` function with a bound `offset`
+  /**
+   * Create an `at` function with a bound `offset`
+   *
+   * @param {number} offset
+   */
   function atFactory(offset) {
     return function () {
       return at(offset)
@@ -272,20 +293,35 @@ export function metaphone(value) {
   return phonized
 }
 
-// Check whether `character` would make `'GH'` an `'F'`
+/**
+ * Check whether `character` would make `'GH'` an `'F'`
+ *
+ * @param {string} character
+ * @returns {boolean}
+ */
 function noGhToF(character) {
   character = char(character)
 
   return character === 'B' || character === 'D' || character === 'H'
 }
 
-// Check whether `character` would make a `'C'` or `'G'` soft
+/**
+ * Check whether `character` would make a `'C'` or `'G'` soft
+ *
+ * @param {string} character
+ * @returns {boolean}
+ */
 function soft(character) {
   character = char(character)
   return character === 'E' || character === 'I' || character === 'Y'
 }
 
-// Check whether `character` is a vowel
+/**
+ * Check whether `character` is a vowel
+ *
+ * @param {string} character
+ * @returns {boolean}
+ */
 function vowel(character) {
   character = char(character)
 
@@ -298,7 +334,12 @@ function vowel(character) {
   )
 }
 
-// Check whether `character` forms a dipthong when preceding H
+/**
+ * Check whether `character` forms a dipthong when preceding H
+ *
+ * @param {string} character
+ * @returns {boolean}
+ */
 function dipthongH(character) {
   character = char(character)
 
@@ -311,18 +352,33 @@ function dipthongH(character) {
   )
 }
 
-// Check whether `character` is in the alphabet
+/**
+ * Check whether `character` is in the alphabet
+ *
+ * @param {string} character
+ * @returns {boolean}
+ */
 function alpha(character) {
   var code = charCode(character)
   return code >= 65 && code <= 90
 }
 
-// Get the upper-case character code of the first character in `character`
+/**
+ * Get the upper-case character code of the first character in `character`
+ *
+ * @param {string} character
+ * @returns {number}
+ */
 function charCode(character) {
   return char(character).charCodeAt(0)
 }
 
-// Turn `character` into a single, upper-case character
+/**
+ * Turn `character` into a single, upper-case character
+ *
+ * @param {string} character
+ * @returns {string}
+ */
 function char(character) {
   return String(character).charAt(0).toUpperCase()
 }

@@ -3,6 +3,7 @@ import fs from 'fs'
 import {URL} from 'url'
 import {metaphone} from './index.js'
 
+/** @type {Object.<string, unknown>} */
 var pack = JSON.parse(
   String(fs.readFileSync(new URL('./package.json', import.meta.url)))
 )
@@ -17,12 +18,15 @@ if (argv.includes('--help') || argv.includes('-h')) {
   process.stdin.resume()
   process.stdin.setEncoding('utf8')
   process.stdin.on('data', function (data) {
-    console.log(phonetics(data))
+    console.log(phonetics(String(data)))
   })
 } else {
   console.log(phonetics(argv.join(' ')))
 }
 
+/**
+ * @param {string} values
+ */
 function phonetics(values) {
   return values
     .split(/\s+/g)

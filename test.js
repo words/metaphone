@@ -5,6 +5,7 @@ import {PassThrough} from 'stream'
 import test from 'tape'
 import {metaphone} from './index.js'
 
+/** @type {Object.<string, unknown>} */
 var pack = JSON.parse(
   String(fs.readFileSync(new URL('./package.json', import.meta.url)))
 )
@@ -13,6 +14,7 @@ var own = {}.hasOwnProperty
 
 test('metaphone()', function (t) {
   t.equal(metaphone(''), '', "should work on `''`")
+  // @ts-ignore
   t.equal(metaphone(false), '', 'should work on `false`')
   t.equal(metaphone(undefined), '', 'should work on `undefined`')
   t.equal(metaphone(null), '', 'should work on `null`')
@@ -261,6 +263,7 @@ test('Compatibility with Natural', function (t) {
     lightning: 'LFTNNK',
     light: 'LFT'
   }
+  /** @type {string} */
   var key
 
   for (key in fixtures) {
