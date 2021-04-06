@@ -1,10 +1,13 @@
-'use strict'
+import {exec} from 'child_process'
+import fs from 'fs'
+import {URL} from 'url'
+import {PassThrough} from 'stream'
+import test from 'tape'
+import {metaphone} from './index.js'
 
-var exec = require('child_process').exec
-var PassThrough = require('stream').PassThrough
-var test = require('tape')
-var version = require('./package').version
-var metaphone = require('.')
+var pack = JSON.parse(
+  String(fs.readFileSync(new URL('./package.json', import.meta.url)))
+)
 
 var own = {}.hasOwnProperty
 
@@ -309,13 +312,13 @@ test('cli', function (t) {
   })
 
   exec('./cli.js -v', function (error, stdout, stderr) {
-    t.deepEqual([error, stdout, stderr], [null, version + '\n', ''], '-v')
+    t.deepEqual([error, stdout, stderr], [null, pack.version + '\n', ''], '-v')
   })
 
   exec('./cli.js --version', function (error, stdout, stderr) {
     t.deepEqual(
       [error, stdout, stderr],
-      [null, version + '\n', ''],
+      [null, pack.version + '\n', ''],
       '--version'
     )
   })
