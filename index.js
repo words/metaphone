@@ -13,7 +13,7 @@ function metaphone(value) {
   var skip
   var next
   var current
-  var prev
+  var previous
 
   // Add `characters` to `phonized`
   function phonize(characters) {
@@ -27,7 +27,7 @@ function metaphone(value) {
 
   // Create an `at` function with a bound `offset`
   function atFactory(offset) {
-    return function() {
+    return function () {
       return at(offset)
     }
   }
@@ -40,7 +40,7 @@ function metaphone(value) {
 
   next = atFactory(1)
   current = atFactory(0)
-  prev = atFactory(-1)
+  previous = atFactory(-1)
 
   // Find our first letter
   while (!alpha(current())) {
@@ -116,7 +116,7 @@ function metaphone(value) {
     skip = 1
 
     // Ignore non-alphas
-    if (!alpha(current()) || (current() === prev() && current() !== 'C')) {
+    if (!alpha(current()) || (current() === previous() && current() !== 'C')) {
       index += skip
       continue
     }
@@ -125,7 +125,7 @@ function metaphone(value) {
     switch (current()) {
       // B -> B unless in MB
       case 'B':
-        if (prev() !== 'M') {
+        if (previous() !== 'M') {
           phonize('B')
         }
 
@@ -139,7 +139,7 @@ function metaphone(value) {
           if (next() === 'I' && at(2) === 'A') {
             // CIA
             phonize(sh)
-          } else if (prev() !== 'S') {
+          } else if (previous() !== 'S') {
             phonize('S')
           }
         } else if (next() === 'H') {
@@ -176,7 +176,7 @@ function metaphone(value) {
           if (!(!alpha(at(2)) || (at(2) === 'E' && at(3) === 'D'))) {
             phonize('K')
           }
-        } else if (soft(next()) && prev() !== 'G') {
+        } else if (soft(next()) && previous() !== 'G') {
           phonize('J')
         } else {
           phonize('K')
@@ -186,14 +186,14 @@ function metaphone(value) {
 
       // H if before a vowel and not after C,G,P,S,T
       case 'H':
-        if (vowel(next()) && !dipthongH(prev())) {
+        if (vowel(next()) && !dipthongH(previous())) {
           phonize('H')
         }
 
         break
       // Dropped if after C, else K
       case 'K':
-        if (prev() !== 'C') {
+        if (previous() !== 'C') {
           phonize('K')
         }
 
@@ -329,7 +329,5 @@ function charCode(character) {
 
 // Turn `character` into a single, upper-case character
 function char(character) {
-  return String(character)
-    .charAt(0)
-    .toUpperCase()
+  return String(character).charAt(0).toUpperCase()
 }

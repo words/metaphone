@@ -6,7 +6,9 @@ var test = require('tape')
 var version = require('./package').version
 var metaphone = require('.')
 
-test('metaphone()', function(t) {
+var own = {}.hasOwnProperty
+
+test('metaphone()', function (t) {
   t.equal(metaphone(''), '', "should work on `''`")
   t.equal(metaphone(false), '', 'should work on `false`')
   t.equal(metaphone(undefined), '', 'should work on `undefined`')
@@ -241,7 +243,7 @@ test('metaphone()', function(t) {
 
 // Tests that this module returns the same results as Natural.
 // See: <https://github.com/NaturalNode/natural>.
-test('Compatibility with Natural', function(t) {
+test('Compatibility with Natural', function (t) {
   var fixtures = {
     ablaze: 'ABLS',
     transition: 'TRNSXN',
@@ -256,54 +258,65 @@ test('Compatibility with Natural', function(t) {
     lightning: 'LFTNNK',
     light: 'LFT'
   }
+  var key
 
-  Object.keys(fixtures).forEach(assert)
+  for (key in fixtures) {
+    if (own.call(fixtures, key)) {
+      t.equal(metaphone(key), fixtures[key], key)
+    }
+  }
 
   t.end()
-
-  function assert(input) {
-    t.equal(metaphone(input), fixtures[input], input)
-  }
 })
 
-test('cli', function(t) {
+test('cli', function (t) {
   var input = new PassThrough()
-  var helps = ['-h', '--help']
-  var versions = ['-v', '--version']
 
   t.plan(7)
 
-  exec('./cli.js michael', function(err, stdout, stderr) {
-    t.deepEqual([err, stdout, stderr], [null, 'MXL\n', ''], 'one')
+  exec('./cli.js michael', function (error, stdout, stderr) {
+    t.deepEqual([error, stdout, stderr], [null, 'MXL\n', ''], 'one')
   })
 
-  exec('./cli.js detestable vileness', function(err, stdout, stderr) {
-    t.deepEqual([err, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'two')
+  exec('./cli.js detestable vileness', function (error, stdout, stderr) {
+    t.deepEqual([error, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'two')
   })
 
-  var subprocess = exec('./cli.js', function(err, stdout, stderr) {
-    t.deepEqual([err, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'stdin')
+  var subprocess = exec('./cli.js', function (error, stdout, stderr) {
+    t.deepEqual([error, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'stdin')
   })
 
   input.pipe(subprocess.stdin)
   input.write('detestable')
-  setImmediate(function() {
+  setImmediate(function () {
     input.end(' vileness')
   })
 
-  helps.forEach(function(flag) {
-    exec('./cli.js ' + flag, function(err, stdout, stderr) {
-      t.deepEqual(
-        [err, /\sUsage: metaphone/.test(stdout), stderr],
-        [null, true, ''],
-        flag
-      )
-    })
+  exec('./cli.js -h', function (error, stdout, stderr) {
+    t.deepEqual(
+      [error, /\sUsage: metaphone/.test(stdout), stderr],
+      [null, true, ''],
+      '-h'
+    )
   })
 
-  versions.forEach(function(flag) {
-    exec('./cli.js ' + flag, function(err, stdout, stderr) {
-      t.deepEqual([err, stdout, stderr], [null, version + '\n', ''], flag)
-    })
+  exec('./cli.js --help', function (error, stdout, stderr) {
+    t.deepEqual(
+      [error, /\sUsage: metaphone/.test(stdout), stderr],
+      [null, true, ''],
+      '--help'
+    )
+  })
+
+  exec('./cli.js -v', function (error, stdout, stderr) {
+    t.deepEqual([error, stdout, stderr], [null, version + '\n', ''], '-v')
+  })
+
+  exec('./cli.js --version', function (error, stdout, stderr) {
+    t.deepEqual(
+      [error, stdout, stderr],
+      [null, version + '\n', ''],
+      '--version'
+    )
   })
 })
