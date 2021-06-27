@@ -7,7 +7,7 @@ var th = '0'
  * @param {string} value
  * @returns {string}
  */
-export function metaphone(value) {
+function metaphone(value) {
   var phonized = ''
   var index = 0
   /** @type {number} */
@@ -382,3 +382,5 @@ function charCode(character) {
 function char(character) {
   return String(character).charAt(0).toUpperCase()
 }
+
+module.exports = metaphone;
