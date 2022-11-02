@@ -6,11 +6,11 @@ import test from 'tape'
 import {metaphone} from './index.js'
 
 /** @type {Object.<string, unknown>} */
-var pack = JSON.parse(
+const pack = JSON.parse(
   String(fs.readFileSync(new URL('package.json', import.meta.url)))
 )
 
-var own = {}.hasOwnProperty
+const own = {}.hasOwnProperty
 
 test('metaphone()', function (t) {
   t.equal(metaphone(''), '', "should work on `''`")
@@ -249,7 +249,7 @@ test('metaphone()', function (t) {
 // Tests that this module returns the same results as Natural.
 // See: <https://github.com/NaturalNode/natural>.
 test('Compatibility with Natural', function (t) {
-  var fixtures = {
+  const fixtures = {
     ablaze: 'ABLS',
     transition: 'TRNSXN',
     astronomical: 'ASTRNMKL',
@@ -264,7 +264,7 @@ test('Compatibility with Natural', function (t) {
     light: 'LFT'
   }
   /** @type {string} */
-  var key
+  let key
 
   for (key in fixtures) {
     if (own.call(fixtures, key)) {
@@ -276,7 +276,7 @@ test('Compatibility with Natural', function (t) {
 })
 
 test('cli', function (t) {
-  var input = new PassThrough()
+  const input = new PassThrough()
 
   t.plan(7)
 
@@ -288,7 +288,7 @@ test('cli', function (t) {
     t.deepEqual([error, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'two')
   })
 
-  var subprocess = exec('./cli.js', function (error, stdout, stderr) {
+  const subprocess = exec('./cli.js', function (error, stdout, stderr) {
     t.deepEqual([error, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'stdin')
   })
 

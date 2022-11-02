@@ -1,5 +1,5 @@
-var sh = 'X'
-var th = '0'
+const sh = 'X'
+const th = '0'
 
 /**
  * Get the phonetics according to the original Metaphone algorithm from a value
@@ -7,17 +7,10 @@ var th = '0'
  * @param {string} value
  * @returns {string}
  */
+// eslint-disable-next-line complexity
 export function metaphone(value) {
-  var phonized = ''
-  var index = 0
-  /** @type {number} */
-  var skip
-  /** @type {function(): string} */
-  var next
-  /** @type {function(): string} */
-  var current
-  /** @type {function(): string} */
-  var previous
+  let phonized = ''
+  let index = 0
 
   /**
    * Add `characters` to `phonized`
@@ -54,9 +47,9 @@ export function metaphone(value) {
     return ''
   }
 
-  next = atFactory(1)
-  current = atFactory(0)
-  previous = atFactory(-1)
+  const next = atFactory(1)
+  const current = atFactory(0)
+  const previous = atFactory(-1)
 
   // Find our first letter
   while (!alpha(current())) {
@@ -129,7 +122,7 @@ export function metaphone(value) {
   while (current()) {
     // How many letters to skip because an eariler encoding handled multiple
     // letters
-    skip = 1
+    let skip = 1
 
     // Ignore non-alphas
     if (!alpha(current()) || (current() === previous() && current() !== 'C')) {
@@ -359,7 +352,7 @@ function dipthongH(character) {
  * @returns {boolean}
  */
 function alpha(character) {
-  var code = charCode(character)
+  const code = charCode(character)
   return code >= 65 && code <= 90
 }
 
