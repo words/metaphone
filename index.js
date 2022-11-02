@@ -11,44 +11,14 @@ const th = '0'
  */
 // eslint-disable-next-line complexity
 export function metaphone(value) {
-  let phonized = ''
-  let index = 0
+  const normalized = String(value || '').toUpperCase()
 
-  /**
-   * Add `characters` to `phonized`
-   *
-   * @param {string} characters
-   */
-  function phonize(characters) {
-    phonized += characters
-  }
-
-  /**
-   * Get the character offset by `offset` from the current character
-   *
-   * @param {number} offset
-   */
-  function at(offset) {
-    return value.charAt(index + offset).toUpperCase()
-  }
-
-  /**
-   * Create an `at` function with a bound `offset`
-   *
-   * @param {number} offset
-   */
-  function atFactory(offset) {
-    return function () {
-      return at(offset)
-    }
-  }
-
-  value = String(value || '')
-
-  if (!value) {
+  if (!normalized) {
     return ''
   }
 
+  let phonized = ''
+  let index = 0
   const next = atFactory(1)
   const current = atFactory(0)
   const previous = atFactory(-1)
@@ -66,11 +36,11 @@ export function metaphone(value) {
     case 'A':
       // AE becomes E
       if (next() === 'E') {
-        phonize('E')
+        phonized += 'E'
         index += 2
       } else {
         // Remember, preserve vowels at the beginning
-        phonize('A')
+        phonized += 'A'
         index++
       }
 
@@ -80,7 +50,7 @@ export function metaphone(value) {
     case 'K':
     case 'P':
       if (next() === 'N') {
-        phonize('N')
+        phonized += 'N'
         index += 2
       }
 
@@ -89,13 +59,13 @@ export function metaphone(value) {
     // WH becomes H, WR becomes R, W if followed by a vowel
     case 'W':
       if (next() === 'R') {
-        phonize(next())
+        phonized += next()
         index += 2
       } else if (next() === 'H') {
-        phonize(current())
+        phonized += current()
         index += 2
       } else if (vowel(next())) {
-        phonize('W')
+        phonized += 'W'
         index += 2
       }
 
@@ -103,7 +73,7 @@ export function metaphone(value) {
       break
     // X becomes S
     case 'X':
-      phonize('S')
+      phonized += 'S'
       index++
 
       break
@@ -112,7 +82,7 @@ export function metaphone(value) {
     case 'I':
     case 'O':
     case 'U':
-      phonize(current())
+      phonized += current()
       index++
       break
     default:
@@ -137,7 +107,7 @@ export function metaphone(value) {
       // B -> B unless in MB
       case 'B':
         if (previous() !== 'M') {
-          phonize('B')
+          phonized += 'B'
         }
 
         break
@@ -149,26 +119,26 @@ export function metaphone(value) {
           // C[IEY]
           if (next() === 'I' && at(2) === 'A') {
             // CIA
-            phonize(sh)
+            phonized += sh
           } else if (previous() !== 'S') {
-            phonize('S')
+            phonized += 'S'
           }
         } else if (next() === 'H') {
-          phonize(sh)
+          phonized += sh
           skip++
         } else {
           // C
-          phonize('K')
+          phonized += 'K'
         }
 
         break
       // J if in -DGE-, -DGI- or -DGY-, else T
       case 'D':
         if (next() === 'G' && soft(at(2))) {
-          phonize('J')
+          phonized += 'J'
           skip++
         } else {
-          phonize('T')
+          phonized += 'T'
         }
 
         break
@@ -180,17 +150,17 @@ export function metaphone(value) {
       case 'G':
         if (next() === 'H') {
           if (!(noGhToF(at(-3)) || at(-4) === 'H')) {
-            phonize('F')
+            phonized += 'F'
             skip++
           }
         } else if (next() === 'N') {
           if (!(!alpha(at(2)) || (at(2) === 'E' && at(3) === 'D'))) {
-            phonize('K')
+            phonized += 'K'
           }
         } else if (soft(next()) && previous() !== 'G') {
-          phonize('J')
+          phonized += 'J'
         } else {
-          phonize('K')
+          phonized += 'K'
         }
 
         break
@@ -198,78 +168,73 @@ export function metaphone(value) {
       // H if before a vowel and not after C,G,P,S,T
       case 'H':
         if (vowel(next()) && !dipthongH(previous())) {
-          phonize('H')
+          phonized += 'H'
         }
 
         break
       // Dropped if after C, else K
       case 'K':
         if (previous() !== 'C') {
-          phonize('K')
+          phonized += 'K'
         }
 
         break
       // F if before H, else P
       case 'P':
-        if (next() === 'H') {
-          phonize('F')
-        } else {
-          phonize('P')
-        }
-
+        phonized += next() === 'H' ? 'F' : 'P'
         break
       // K
       case 'Q':
-        phonize('K')
+        phonized += 'K'
         break
       // 'sh' in -SH-, -SIO- or -SIA- or -SCHW-, else S
       case 'S':
         if (next() === 'I' && (at(2) === 'O' || at(2) === 'A')) {
-          phonize(sh)
+          phonized += sh
         } else if (next() === 'H') {
-          phonize(sh)
+          phonized += sh
           skip++
         } else {
-          phonize('S')
+          phonized += 'S'
         }
 
         break
       // 'sh' in -TIA- or -TIO-, else 'th' before H, else T
       case 'T':
         if (next() === 'I' && (at(2) === 'O' || at(2) === 'A')) {
-          phonize(sh)
+          phonized += sh
         } else if (next() === 'H') {
-          phonize(th)
+          phonized += th
           skip++
         } else if (!(next() === 'C' && at(2) === 'H')) {
-          phonize('T')
+          phonized += 'T'
         }
 
         break
       // F
       case 'V':
-        phonize('F')
+        phonized += 'F'
         break
       case 'W':
         if (vowel(next())) {
-          phonize('W')
+          phonized += 'W'
         }
 
         break
       // KS
       case 'X':
-        phonize('KS')
+        phonized += 'KS'
         break
       // Y if followed by a vowel
       case 'Y':
         if (vowel(next())) {
-          phonize('Y')
+          phonized += 'Y'
         }
 
         break
       // S
       case 'Z':
-        phonize('S')
+        phonized += 'S'
         break
       // No transformation
       case 'F':
@@ -278,7 +243,7 @@ export function metaphone(value) {
       case 'M':
       case 'N':
       case 'R':
-        phonize(current())
+        phonized += current()
         break
     }
 
@@ -286,6 +251,26 @@ export function metaphone(value) {
   }
 
   return phonized
+
+  /**
+   * Get the character offset by `offset` from the current character.
+   *
+   * @param {number} offset
+   */
+  function at(offset) {
+    return normalized.charAt(index + offset)
+  }
+
+  /**
+   * Create an `at` function with a bound `offset`.
+   *
+   * @param {number} offset
+   */
+  function atFactory(offset) {
+    return function () {
+      return at(offset)
+    }
+  }
 }
 
 /**
@@ -295,8 +280,6 @@ export function metaphone(value) {
  * @returns {boolean}
  */
 function noGhToF(character) {
-  character = char(character)
-
   return character === 'B' || character === 'D' || character === 'H'
 }
 
@@ -307,7 +290,6 @@ function noGhToF(character) {
  * @returns {boolean}
  */
 function soft(character) {
-  character = char(character)
   return character === 'E' || character === 'I' || character === 'Y'
 }
 
@@ -318,8 +300,6 @@ function soft(character) {
  * @returns {boolean}
  */
 function vowel(character) {
-  character = char(character)
-
   return (
     character === 'A' ||
     character === 'E' ||
@@ -336,8 +316,6 @@ function vowel(character) {
  * @returns {boolean}
  */
 function dipthongH(character) {
-  character = char(character)
-
   return (
     character === 'C' ||
     character === 'G' ||
@@ -354,27 +332,6 @@ function dipthongH(character) {
  * @returns {boolean}
  */
 function alpha(character) {
-  const code = charCode(character)
-  return code >= 65 && code <= 90
-}
-
-/**
- * Get the upper-case character code of the first character in `character`
- *
- * @param {string} character
- * @returns {number}
- */
-function charCode(character) {
-  // @ts-expect-error: it’s a numer.
-  return char(character).codePointAt(0)
-}
-
-/**
- * Turn `character` into a single, upper-case character
- *
- * @param {string} character
- * @returns {string}
- */
-function char(character) {
-  return String(character).charAt(0).toUpperCase()
+  const code = character.codePointAt(0)
+  return code !== undefined && code >= 65 && code <= 90
 }
