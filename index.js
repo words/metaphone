@@ -2,10 +2,12 @@ const sh = 'X'
 const th = '0'
 
 /**
- * Get the phonetics according to the original Metaphone algorithm from a value
+ * Get the phonetics according to the original Metaphone algorithm from a value.
  *
  * @param {string} value
+ *   Value to use.
  * @returns {string}
+ *   Metaphone code for `value`.
  */
 // eslint-disable-next-line complexity
 export function metaphone(value) {
