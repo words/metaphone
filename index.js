@@ -370,7 +370,7 @@ function alpha(character) {
  * @returns {number}
  */
 function charCode(character) {
-  return char(character).charCodeAt(0)
+  return char(character).codePointAt(0)
 }
 
 /**
