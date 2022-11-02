@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict'
 import {exec} from 'node:child_process'
 import fs from 'node:fs'
 import {URL} from 'node:url'
@@ -5,7 +6,7 @@ import {PassThrough} from 'node:stream'
 import test from 'tape'
 import {metaphone} from './index.js'
 
-/** @type {Object.<string, unknown>} */
+/** @type {Record<string, unknown>} */
 const pack = JSON.parse(
   String(fs.readFileSync(new URL('package.json', import.meta.url)))
 )
@@ -14,9 +15,11 @@ const own = {}.hasOwnProperty
 
 test('metaphone()', function (t) {
   t.equal(metaphone(''), '', "should work on `''`")
-  // @ts-ignore
+  // @ts-expect-error
   t.equal(metaphone(false), '', 'should work on `false`')
+  // @ts-expect-error
   t.equal(metaphone(undefined), '', 'should work on `undefined`')
+  // @ts-expect-error
   t.equal(metaphone(null), '', 'should work on `null`')
 
   t.equal(metaphone(' f o '), 'F', 'should ignore white-space')
@@ -249,6 +252,7 @@ test('metaphone()', function (t) {
 // Tests that this module returns the same results as Natural.
 // See: <https://github.com/NaturalNode/natural>.
 test('Compatibility with Natural', function (t) {
+  /** @type {Record<string, string>} */
   const fixtures = {
     ablaze: 'ABLS',
     transition: 'TRNSXN',
@@ -292,6 +296,7 @@ test('cli', function (t) {
     t.deepEqual([error, stdout, stderr], [null, 'TTSTBL FLNS\n', ''], 'stdin')
   })
 
+  assert(subprocess.stdin, 'expected `stdin` on child process')
   input.pipe(subprocess.stdin)
   input.write('detestable')
   setImmediate(function () {

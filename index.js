@@ -363,6 +363,7 @@ function alpha(character) {
  * @returns {number}
  */
 function charCode(character) {
+  // @ts-expect-error: it’s a numer.
   return char(character).codePointAt(0)
 }
 
